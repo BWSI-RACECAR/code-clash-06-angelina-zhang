@@ -40,15 +40,38 @@ class Solution:
         #     if checkpoints[i]> max:
         #         max = checkpoints
         #     elif cgec
-        max_dist = 0
-        for i in range (0, len(checkpoints)-1):
-            if abs(checkpoints[i+1]- checkpoints[i])>max_dist:
-                max_dist =checkpoints[i+1]- checkpoints[i]
-        if max_dist<0:
-            max_dist = -max_dist
+        
+        # for i in range (0, len(checkpoints)-1):
+        #     if abs(checkpoints[i+1]- checkpoints[i])>max_dist:
+        #         max_dist =checkpoints[i+1]- checkpoints[i]
+        # if max_dist<0:
+        #     max_dist = -max_dist
+        # new = []
+        # order = 0
+        # for i in range (0, len(checkpoints)):
+        #     if checkpoints[i]>checkpoints[i+1]:
+        #         order +=1 
+
+        
+            
+        def bubblesort(arr):
+            for i in range (0, len(arr)):
+                for j in range (0, len(arr)-1):
+                    if arr[j] >arr[j+1]:
+                        if arr[j] >arr[j+1]:
+                            temp = arr[j]
+                            arr[j] = arr[j+1]
+                            arr[j+1]= temp
+            return arr
+        checkpoints = bubblesort(checkpoints)
+        distances = []
+        for i in range(len(checkpoints) - 1):
+            distances.append(checkpoints[i+1]-checkpoints[i])
+        distances = bubblesort(distances)
+
        
             
-        return max_dist
+        return distances[-1]
 
 def main():
     array = input().split(" ")

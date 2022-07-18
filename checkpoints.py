@@ -42,8 +42,12 @@ class Solution:
         #     elif cgec
         max_dist = 0
         for i in range (0, len(checkpoints)-1):
-            if checkpoints[i+1]- checkpoints[i]:
+            if abs(checkpoints[i+1]- checkpoints[i])>max_dist:
                 max_dist =checkpoints[i+1]- checkpoints[i]
+        if max_dist<0:
+            max_dist = -max_dist
+       
+            
         return max_dist
 
 def main():
